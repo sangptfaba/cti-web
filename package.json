@@ -1,0 +1,22 @@
+{
+  "name": "cti-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "9.3.4",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "shards-react": "^1.0.3"
+  },
+  "devDependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.28",
+    "@fortawesome/free-solid-svg-icons": "^5.13.0",
+    "@fortawesome/react-fontawesome": "^0.1.9",
+    "@zeit/next-css": "^1.0.1"
+  }
+}

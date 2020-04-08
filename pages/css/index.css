@@ -1,0 +1,29 @@
+#rowButtonsDiv {
+  position: relative;
+}
+
+#rowButtons {
+  position: absolute;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+@media (max-width: 576px) {
+  #rowButtonsDiv {
+    height: 270px;
+    font-size: larger;
+  }
+  #rowButtons {
+    top: -20px;
+  }
+}
+@media (min-width: 577px) {
+  #rowButtonsDiv {
+    height: 100px;
+    font-size: larger;
+  }
+  #rowButtons {
+    top: -80px;
+  }
+}
