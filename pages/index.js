@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Head from "next/head";
-import { faAddressCard, faBell } from "@fortawesome/free-solid-svg-icons";
+import { faBell } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Navbar,
@@ -32,8 +32,10 @@ import "shards-ui/dist/css/shards.min.css";
 const assets = {
   logo: "/assets/Asset-2@14x-1.png",
   bottom_logo: "/assets/Asset-logo-bottom.png",
+  landing_image: "/assets/placeholder-banner-3.png",
   virus_svg: "/assets/virus.svg",
   calendar_svg: "/assets/calendar.svg",
+  li_circle_svg: "/assets/circle.svg",
 };
 
 class Home extends Component {
@@ -93,20 +95,23 @@ class Home extends Component {
               >
                 <DropdownToggle
                   onMouseOver={this.handleToggleFormAndPublicTrue}
-                  // onMouseLeave={this.handleToggleFormAndPublicFalse}
                   nav
-                  className="text-secondary px-lg-3 px-md-1"
+                  className="text-secondary px-lg-3 px-md-1 reposition-nav"
                 >
                   Form & Publication
                 </DropdownToggle>
-                <DropdownMenu className="text-secondary bg-primary">
-                  <DropdownItem className="text-light">
-                    Form & Publication
-                  </DropdownItem>
-                  <DropdownItem className="text-light">
-                    Our Publication
-                  </DropdownItem>
-                  <DropdownItem className="text-light">CTI Forms</DropdownItem>
+                <DropdownMenu className="text-secondary">
+                  <div onMouseLeave={this.handleToggleFormAndPublicFalse}>
+                    <DropdownItem disabled className="text-secondary">
+                      Form & Publication
+                    </DropdownItem>
+                    <DropdownItem className="text-secondary">
+                      Our Publication
+                    </DropdownItem>
+                    <DropdownItem className="text-secondary">
+                      CTI Forms
+                    </DropdownItem>
+                  </div>
                 </DropdownMenu>
               </Dropdown>
               <NavItem>
@@ -159,18 +164,23 @@ class Home extends Component {
                   Admin
                 </DropdownToggle>
                 <DropdownMenu className="bg-primary">
-                  <DropdownItem className="text-light">Admin</DropdownItem>
-                  <DropdownItem className="text-light">
-                    Manage User
-                  </DropdownItem>
-                  <DropdownItem className="text-light">
-                    Create User
-                  </DropdownItem>
+                  <div onMouseLeave={this.handleToggleAdminFalse}>
+                    <DropdownItem disabled className="text-light">
+                      Admin
+                    </DropdownItem>
+                    <DropdownItem className="text-light">
+                      Manage User
+                    </DropdownItem>
+                    <DropdownItem className="text-light">
+                      Create User
+                    </DropdownItem>
+                  </div>
                 </DropdownMenu>
               </Dropdown>
               <div
-                style={{ height: 40, width: 1, backgroundColor: "#bfbfc1" }}
-              ></div>
+                id="nav-divider"
+                style={{ height: 50, width: 1, backgroundColor: "#bfbfc1" }}
+              />
               <NavItem>
                 <NavLink
                   active
@@ -193,28 +203,36 @@ class Home extends Component {
           </Collapse>
         </Navbar>
         <main>
-          <div className="text-center" style={{ position: "relative" }}>
-            <img
-              src="/assets/placeholder.png"
-              className="img-fluid"
-              alt="Responsive image"
-            />
+          <div
+            className="text-center"
+            style={{
+              position: "relative",
+              height: 300,
+              width: "100%",
+              backgroundImage: `url(${assets.landing_image})`,
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+            }}
+          >
             <div
               className="text-left"
               style={{ position: "absolute", top: "5vmin", right: "10vmin" }}
             >
               <h5 className="text-primary">
-                Whole-Person
+                Whole-Person,
                 <br />
-                Patient-Center Care
+                Patient Driven Care
               </h5>
-              <button id="btnLearnMore">Learn More</button>
+              <button id="btnLearnMore" className="cbtn-0">
+                Learn More
+              </button>
             </div>
           </div>
           <div id="rowButtonsDiv" className="text-center mb-5">
             <Row
               id="rowButtons"
-              className="d-flex flex-row justify-content-center"
+              className="main-btns-row d-flex flex-row justify-content-center"
             >
               <Col
                 xs={11}
@@ -229,7 +247,7 @@ class Home extends Component {
                     backgroundColor: "#00a4fa",
                     border: "none",
                     width: "100%",
-                    height: 150,
+                    height: 135,
                     fontSize: "inherit",
                   }}
                 >
@@ -251,8 +269,9 @@ class Home extends Component {
                     backgroundColor: "#77cefc",
                     border: "none",
                     width: "100%",
-                    height: 150,
+                    height: 135,
                     fontSize: "inherit",
+                    padding: "0 15px",
                   }}
                 >
                   <img src={assets.calendar_svg} className="mainBtnSVG" />
@@ -269,37 +288,68 @@ class Home extends Component {
               </Col>
               <Col sm={10} md={7} className="offset-md-1">
                 <p>
-                  <strong>Introduce ourselves</strong> - Nemo enim ipsam
-                  voluptatem quia voluptas sit aspernatur aut odit aut fugit,
-                  sed quia consequuntur magni dolores eos qui ratione voluptatem
-                  sequi nesciunt.
+                  The Care Transitions Intervention® (CTI) is an evidence-based
+                  model that complements a systems’ care team by putting the
+                  patient first. During a 30-day program, clients with complex
+                  care needs and family caregivers receive specific tools and
+                  work with a Transitions Coach®, to build self-management
+                  skills that will ensure their needs are met during the
+                  transition from hospital to home. This intervention is
+                  comprised of a hospital visit, a home visit, and three phone
+                  calls. Uniquely critical to the program is the role of the
+                  Transitions Coach® (TC). TCs tap into what motivates and
+                  matters to the patient and puts them in the driver’s seat to
+                  navigate through personal skill development. Through the
+                  guidance of a TC, patients will identify a 30-day goal,
+                  practice skills, and gain confidence in four key areas of
+                  health, known as the Four Pillars® (medication
+                  self-management, primary care, personal health record, and
+                  knowing their warning signs). ....
                 </p>
                 <p>
+                  <strong className="ctext-purple ctext-bolder">
+                    Ut enim ad minima -{" "}
+                  </strong>
                   voluptatem. Ut enim ad minima veniam, quis nostrum
                   exercitationem ullam corporis suscipit laboriosam, nisi ut
                   aliquid ex ea commodi consequatur?
                 </p>
-                <ul>
+                <ul
+                  style={{
+                    listStyleType: "none",
+                  }}
+                >
                   <li>
-                    <strong>List item one: </strong> voluptatem. Ut enim ad
-                    minima veniam, quis nostrum exercitationem ullam corpor
+                    <img src={assets.li_circle_svg} className="cli-circle" />
+                    <strong className="ctext-bold ctext-purple">
+                      List item one:{" "}
+                    </strong>{" "}
+                    voluptatem. Ut enim ad minima veniam, quis nostrum
+                    exercitationem ullam corpor
                   </li>
                   <li>
-                    <strong>List item two: </strong> voluptatem. Ut enim ad
-                    minima veniam, quis nostrum exercitationem ullam corpor
+                    <img src={assets.li_circle_svg} className="cli-circle" />
+                    <strong className="ctext-bold ctext-purple">
+                      List item two:{" "}
+                    </strong>{" "}
+                    voluptatem. Ut enim ad minima veniam, quis nostrum
+                    exercitationem ullam corpor
                   </li>
                   <li>
-                    <strong>List item three: </strong> voluptatem. Ut enim ad
-                    minima veniam, quis nostrum exercitationem ullam corpor
+                    <img src={assets.li_circle_svg} className="cli-circle" />
+                    <strong className="ctext-bold ctext-purple">
+                      List item three:{" "}
+                    </strong>{" "}
+                    voluptatem. Ut enim ad minima veniam, quis nostrum
+                    exercitationem ullam corpor
                   </li>
                 </ul>
                 <p>
-                  <strong>Introduce ourselves</strong> - Nemo enim ipsam
-                  voluptatem quia voluptas sit aspernatur aut odit aut fugit,
-                  sed quia consequuntur magni dolores eos qui ratione voluptatem
-                  sequi nesciunt.
+                  Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut
+                  odit aut fugit, sed quia consequuntur magni dolores eos qui
+                  ratione voluptatem sequi nesciunt.
                 </p>
-                <Button>Let's Talk!</Button>
+                <button className="cbtn-0">Let's talk!</button>
               </Col>
             </Row>
           </Container>
@@ -321,15 +371,33 @@ class Home extends Component {
           }
 
           .mainBtnSVG {
-            width: 60px;
+            width: 50px;
+            margin-bottom: 15px;
           }
 
-          #btnLearnMore {
+          .cbtn-0 {
             background-color: #1c7cd5;
             border: none;
             color: white;
-            padding: 10px 20px;
+            padding: 10px 30px;
             border-radius: 0.25rem;
+          }
+
+          .cli-circle {
+            width: 13px;
+            margin-right: 4px;
+            margin-bottom: 3px;
+          }
+
+          .ctext-bold {
+            font-weight: bold;
+          }
+          .ctext-bolder {
+            font-weight: bolder;
+          }
+
+          .ctext-purple {
+            color: #025986;
           }
 
           #btnLearnMore:hover {
@@ -350,10 +418,6 @@ class Home extends Component {
 
           .btn-covid-19-color {
             background-color: #00a4fa !important;
-          }
-
-          #rowButtons {
-            top: -30px;
           }
 
           #btn-training-session-color {
@@ -380,7 +444,7 @@ class Home extends Component {
             padding: 0;
             margin: 0;
             font-family: "adobe-clean", sans-serif;
-            color: #7b7bd8;
+            color: #00a4fa;
           }
         `}</style>
       </div>
