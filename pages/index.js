@@ -98,7 +98,7 @@ class Home extends Component {
                   nav
                   className="text-secondary px-lg-3 px-md-1 reposition-nav"
                 >
-                  Form & Publication
+                  Form & Publication HEHE
                 </DropdownToggle>
                 <DropdownMenu className="text-secondary">
                   <div onMouseLeave={this.handleToggleFormAndPublicFalse}>
